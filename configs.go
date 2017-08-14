@@ -1,11 +1,12 @@
+// copyrights go here
 package common_utils
 
 import (
 	"errors"
+	"log"
 	"os"
 	"regexp"
 	"strings"
-	"log"
 )
 
 var re *regexp.Regexp
@@ -44,12 +45,12 @@ func Load(configPath string, dest map[string]string) error {
 		if strings.HasPrefix(s2[i], "#") {
 			i++
 		} else if strings.HasSuffix(s2[i], "=") {
-			key := strings.ToLower(s2[i])[0 : len(s2[i]) - 1]
+			key := strings.ToLower(s2[i])[0 : len(s2[i])-1]
 			i++
 			if strings.HasSuffix(s2[i], "\n") {
-				val := s2[i][0 : len(s2[i]) - 1]
+				val := s2[i][0 : len(s2[i])-1]
 				if strings.HasSuffix(val, "\r") {
-					val = val[0 : len(val) - 1]
+					val = val[0 : len(val)-1]
 				}
 				i++
 				dest[key] = val
